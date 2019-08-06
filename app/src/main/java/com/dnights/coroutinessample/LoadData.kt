@@ -8,4 +8,8 @@ object LoadData {
         return "Hello World!!!"
     }
 
+    fun loadHelloWorldRx() : Observable<String> {
+        return Observable.just("Hello World!!!")
+    }
+
 }
