@@ -13,5 +13,7 @@ class MainActivity : AppCompatActivity() {
         JavaThread.startThread(textview_hello_world)
 
         //AndroidAsyncTask.startAsyncTask(textview_hello_world)
+
+        //ReactiveX.startRxKotlin(textview_hello_world)
     }
 }
