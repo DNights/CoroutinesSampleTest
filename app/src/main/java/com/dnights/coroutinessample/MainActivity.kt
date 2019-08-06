@@ -11,5 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         JavaThread.startThread(textview_hello_world)
+
+        //AndroidAsyncTask.startAsyncTask(textview_hello_world)
     }
 }
