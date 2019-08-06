@@ -15,5 +15,7 @@ class MainActivity : AppCompatActivity() {
         //AndroidAsyncTask.startAsyncTask(textview_hello_world)
 
         //ReactiveX.startRxKotlin(textview_hello_world)
+
+        //Coroutines.startCoroutine(textview_hello_world)
     }
 }
