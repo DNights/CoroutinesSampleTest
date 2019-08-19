@@ -10,12 +10,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        JavaThread.startThread(textview_hello_world)
+        button_Thread.setOnClickListener {
+            JavaThread.startThread(textview_Thread)
+        }
 
-        //AndroidAsyncTask.startAsyncTask(textview_hello_world)
+        button_AsyncTask.setOnClickListener {
+            AndroidAsyncTask.startAsyncTask(textview_AsyncTask)
+        }
 
-        //ReactiveX.startRxKotlin(textview_hello_world)
+        button_RxKotlin.setOnClickListener {
+            ReactiveX.startRxKotlin(textview_RxKotlin)
+        }
 
-        //Coroutines.startCoroutine(textview_hello_world)
+        button_Coroutine.setOnClickListener {
+            Coroutines.startCoroutine(textview_Coroutine)
+        }
     }
 }

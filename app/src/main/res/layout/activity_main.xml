@@ -1,20 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/textview_hello_world"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/textview_Thread"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Thread"
+                android:layout_weight="1"/>
+        <Button
+                android:text="startThread"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button_Thread"
+                android:layout_weight="1"/>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/textview_AsyncTask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="AsyncTask"
+                android:layout_weight="1"/>
+        <Button
+                android:text="startAsyncTask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button_AsyncTask"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/textview_RxKotlin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="RxKotlin"
+                android:layout_weight="1"/>
+        <Button
+                android:text="startRxKotlin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button_RxKotlin"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/textview_Coroutine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Coroutine"
+                android:layout_weight="1"/>
+        <Button
+                android:text="startCoroutine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button_Coroutine"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>
