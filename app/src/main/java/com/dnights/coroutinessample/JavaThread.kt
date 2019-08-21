@@ -3,8 +3,6 @@ package com.dnights.coroutinessample
 import android.os.Handler
 import android.os.Looper
 import android.widget.ProgressBar
-import com.dnights.coroutinessample.LoadData.loadHelloWrold
-import kotlinx.coroutines.delay
 import java.lang.Thread.sleep
 
 object JavaThread {

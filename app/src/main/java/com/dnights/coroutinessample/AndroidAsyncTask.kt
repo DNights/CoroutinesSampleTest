@@ -3,7 +3,6 @@ package com.dnights.coroutinessample
 import android.annotation.SuppressLint
 import android.os.AsyncTask
 import android.widget.ProgressBar
-import com.dnights.coroutinessample.LoadData.loadHelloWrold
 
 object AndroidAsyncTask {
 

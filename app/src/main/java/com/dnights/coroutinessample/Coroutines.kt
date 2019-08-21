@@ -1,7 +1,6 @@
 package com.dnights.coroutinessample
 
 import android.widget.ProgressBar
-import com.dnights.coroutinessample.LoadData.loadHelloWrold
 import kotlinx.coroutines.*
 
 object Coroutines {
