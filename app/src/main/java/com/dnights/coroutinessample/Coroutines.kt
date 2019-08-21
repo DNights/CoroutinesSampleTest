@@ -1,25 +1,30 @@
 package com.dnights.coroutinessample
 
-import android.widget.TextView
+import android.widget.ProgressBar
 import com.dnights.coroutinessample.LoadData.loadHelloWrold
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 object Coroutines {
 
-    fun startCoroutine(textView: TextView){
+    private val PROGRESS_MAX = 100
+    private val PROGRESS_START = 0
+    private val JOB_TIME = 4000 // ms
+
+    fun startCoroutine(progessbarCoroutine: ProgressBar) {
         CoroutineScope(Dispatchers.Main).launch {
             // Show progress from UI thread
-            var data = ""
+
+            progessbarCoroutine.progress = 0
+
             CoroutineScope(Dispatchers.Default).async {
                 // background thread
-                data = loadHelloWrold()
+                for(i in PROGRESS_START..PROGRESS_MAX){
+                    delay((JOB_TIME / PROGRESS_MAX).toLong())
+                    progessbarCoroutine.progress = i
+                }
             }.await()
             // UI data update from UI thread
             // Hide Progress from UI thread
-            textView.text = data
         }
     }
 

@@ -11,19 +11,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button_Thread.setOnClickListener {
-            JavaThread.startThread(textview_Thread)
+            JavaThread.startThread(progessBar_Thread)
         }
 
         button_AsyncTask.setOnClickListener {
-            AndroidAsyncTask.startAsyncTask(textview_AsyncTask)
+            AndroidAsyncTask.startAsyncTask(progessBar_AsyncTask)
         }
 
         button_RxKotlin.setOnClickListener {
-            ReactiveX.startRxKotlin(textview_RxKotlin)
+            ReactiveX.startRxKotlin(progessBar_Rx)
         }
 
         button_Coroutine.setOnClickListener {
-            Coroutines.startCoroutine(textview_Coroutine)
+            Coroutines.startCoroutine(progessBar_Coroutine)
         }
     }
 }

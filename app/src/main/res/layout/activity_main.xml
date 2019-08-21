@@ -9,14 +9,14 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-                android:id="@+id/textview_Thread"
+        <ProgressBar
+                android:id="@+id/progessBar_Thread"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Thread"
-                android:layout_weight="1"/>
+                android:layout_weight="0.6"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
         <Button
-                android:text="startThread"
+                android:text="start Thread"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/button_Thread"
@@ -27,14 +27,14 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-                android:id="@+id/textview_AsyncTask"
+        <ProgressBar
+                android:id="@+id/progessBar_AsyncTask"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="AsyncTask"
-                android:layout_weight="1"/>
+                android:layout_weight="0.6"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
         <Button
-                android:text="startAsyncTask"
+                android:text="start AsyncTask"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/button_AsyncTask"
@@ -45,14 +45,14 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-                android:id="@+id/textview_RxKotlin"
+        <ProgressBar
+                android:id="@+id/progessBar_Rx"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="RxKotlin"
-                android:layout_weight="1"/>
+                android:layout_weight="0.6"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
         <Button
-                android:text="startRxKotlin"
+                android:text="start RxKotlin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/button_RxKotlin"
@@ -63,14 +63,14 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-                android:id="@+id/textview_Coroutine"
+        <ProgressBar
+                android:id="@+id/progessBar_Coroutine"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Coroutine"
-                android:layout_weight="1"/>
+                android:layout_weight="0.6"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
         <Button
-                android:text="startCoroutine"
+                android:text="start Coroutine"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/button_Coroutine"
