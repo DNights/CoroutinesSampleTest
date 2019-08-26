@@ -9,13 +9,14 @@ object Coroutines {
     private val PROGRESS_START = 0
     private val JOB_TIME = 4000 // ms
 
-    fun startCoroutine(progessbarCoroutine: ProgressBar) {
-        CoroutineScope(Dispatchers.Main).launch {
-            // Show progress from UI thread
+    var job = Job()
 
+    fun startCoroutine(progessbarCoroutine: ProgressBar) {
+        CoroutineScope(Dispatchers.Main + job).launch {
+            // Show progress from UI thread
             progessbarCoroutine.progress = 0
 
-            CoroutineScope(Dispatchers.Default).async {
+            CoroutineScope(Dispatchers.Default + job).async {
                 // background thread
                 for(i in PROGRESS_START..PROGRESS_MAX){
                     delay((JOB_TIME / PROGRESS_MAX).toLong())
@@ -27,5 +28,8 @@ object Coroutines {
         }
     }
 
-
+    fun cancelCoroutine() {
+        job.cancel()
+        job = Job()
+    }
 }
