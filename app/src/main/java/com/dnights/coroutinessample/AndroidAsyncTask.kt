@@ -13,10 +13,10 @@ class AndroidAsyncTask(private val progressAsyncTask: ProgressBar) : AsyncTask<U
 
     override fun doInBackground(vararg params: Unit?): Int {
         for(i in PROGRESS_START..PROGRESS_MAX){
-            if(isCanceled) return -1
+            if(isCanceled) break
             Thread.sleep((JOB_TIME / PROGRESS_MAX).toLong())
             publishProgress(i)
-            Log.d("test", "AndroidAsyncTask doInBackground = ${i}")
+            Log.d("test", "AndroidAsyncTask doInBackground = $i")
         }
 
         return -1

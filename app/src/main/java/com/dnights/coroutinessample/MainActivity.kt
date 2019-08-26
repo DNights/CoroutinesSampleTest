@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         button_AsyncTask.setOnClickListener {
             if(asyncTask != null){
-                asyncTask?.cancel(false)
+                asyncTask?.cancel(true)
                 button_AsyncTask.text = "start AsyncTask"
                 asyncTask = null
                 return@setOnClickListener
