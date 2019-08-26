@@ -21,7 +21,7 @@ object ReactiveX {
     fun startRxKotlin(progessbarRx: ProgressBar) {
         Observable
             .intervalRange(PROGRESS_START.toLong(),
-                PROGRESS_MAX.toLong(),
+                PROGRESS_MAX+1.toLong(),
                 0,
                 (JOB_TIME / PROGRESS_MAX).toLong(),
                 TimeUnit.MILLISECONDS)
