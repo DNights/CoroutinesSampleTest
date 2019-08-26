@@ -12,14 +12,20 @@ object AndroidAsyncTask {
 
     fun startAsyncTask(progressAsyncTask: ProgressBar) {
         val loadData = @SuppressLint("StaticFieldLeak")
-        object : AsyncTask<Unit, Unit, Int>() {
+        object : AsyncTask<Unit, Int, Int>() {
+
             override fun doInBackground(vararg params: Unit?): Int {
                 for(i in PROGRESS_START..PROGRESS_MAX){
                     Thread.sleep((JOB_TIME / PROGRESS_MAX).toLong())
-                    progressAsyncTask.progress = i
+                    publishProgress(i)
                 }
 
-                return progressAsyncTask.progress
+                return -1
+            }
+
+            override fun onProgressUpdate(vararg values: Int?) {
+                super.onProgressUpdate(*values)
+                progressAsyncTask.progress = values[0] ?: -1
             }
 
             override fun onPreExecute() {
