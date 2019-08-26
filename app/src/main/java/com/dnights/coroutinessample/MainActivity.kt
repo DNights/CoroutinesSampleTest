@@ -51,8 +51,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initRX(){
+        var isRxRun = false
+
         button_RxKotlin.setOnClickListener {
+            if(isRxRun){
+                ReactiveX.cancelRxKotlin()
+                button_RxKotlin.text = "start RxKotlin"
+                isRxRun = false
+                return@setOnClickListener
+            }
+
             ReactiveX.startRxKotlin(progessBar_Rx)
+            button_RxKotlin.text = "cancel RxKotlin"
+            isRxRun = true
         }
     }
 
