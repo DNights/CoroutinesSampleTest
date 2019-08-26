@@ -3,6 +3,8 @@ package com.dnights.coroutinessample
 import android.widget.ProgressBar
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
 object ReactiveX {
@@ -11,8 +13,11 @@ object ReactiveX {
     private val PROGRESS_START = 0
     private val JOB_TIME = 4000 // ms
 
-    fun startRxKotlin(progessbarRx: ProgressBar) {
+    val disposables by lazy {
+        CompositeDisposable()
+    }
 
+    fun startRxKotlin(progessbarRx: ProgressBar) {
         Observable
             .intervalRange(PROGRESS_START.toLong(),
                 PROGRESS_MAX.toLong(),
@@ -30,11 +35,11 @@ object ReactiveX {
             .subscribe{
                 // UI data update from UI thread
                 progessbarRx.progress = it.toInt()
-            }.let {
+            }.apply { disposables.add(this) }
+    }
 
-            }
-
-
+    fun cancelRxKotlin() {
+        disposables.clear()
     }
 
 }
