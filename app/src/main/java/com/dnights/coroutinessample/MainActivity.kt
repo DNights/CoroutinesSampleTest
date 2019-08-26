@@ -68,8 +68,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initCoroutine(){
+        var isCoroutineRun = false
+
         button_Coroutine.setOnClickListener {
+            if(isCoroutineRun){
+                Coroutines.cancelCoroutine()
+                button_Coroutine.text = "start Coroutine"
+                isCoroutineRun = false
+                return@setOnClickListener
+            }
+
             Coroutines.startCoroutine(progessBar_Coroutine)
+            button_Coroutine.text = "cancel Coroutine"
+            isCoroutineRun = true
         }
     }
 
