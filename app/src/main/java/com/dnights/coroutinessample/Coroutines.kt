@@ -1,5 +1,6 @@
 package com.dnights.coroutinessample
 
+import android.util.Log
 import android.widget.ProgressBar
 import kotlinx.coroutines.*
 
@@ -21,6 +22,7 @@ object Coroutines {
                 for(i in PROGRESS_START..PROGRESS_MAX){
                     delay((JOB_TIME / PROGRESS_MAX).toLong())
                     progessbarCoroutine.progress = i
+                    Log.d("test", "Coroutines progessbarCoroutine.progress = ${progessbarCoroutine.progress}")
                 }
             }.await()
             // UI data update from UI thread
@@ -31,5 +33,6 @@ object Coroutines {
     fun cancelCoroutine() {
         job.cancel()
         job = Job()
+        Log.d("test", "Coroutines cancelCoroutine")
     }
 }

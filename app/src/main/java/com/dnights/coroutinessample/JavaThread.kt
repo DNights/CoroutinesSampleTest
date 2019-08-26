@@ -2,6 +2,7 @@ package com.dnights.coroutinessample
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.ProgressBar
 import java.lang.Thread.sleep
 
@@ -22,9 +23,11 @@ class JavaThread(private val progessbarThread: ProgressBar) : Thread() {
             for (i in PROGRESS_START..PROGRESS_MAX) {
                 sleep((JOB_TIME / PROGRESS_MAX).toLong())
                 progessbarThread.progress = i
+                Log.d("test", "JavaThread progessbarThread.progress = ${progessbarThread.progress}")
             }
         }catch (e:InterruptedException){
             e.printStackTrace()
+            Log.d("test", "JavaThread end")
         }
 
         Handler(Looper.getMainLooper()).post {
