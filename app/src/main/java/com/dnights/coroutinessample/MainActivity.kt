@@ -11,20 +11,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initJavaThread()
-
-        button_AsyncTask.setOnClickListener {
-            AndroidAsyncTask.startAsyncTask(progessBar_AsyncTask)
-        }
-
-        button_RxKotlin.setOnClickListener {
-            ReactiveX.startRxKotlin(progessBar_Rx)
-        }
-
-        button_Coroutine.setOnClickListener {
-            Coroutines.startCoroutine(progessBar_Coroutine)
-        }
+        initAsyncTask()
+        initRX()
+        initCoroutine()
     }
 
     fun initJavaThread(){
@@ -43,4 +33,33 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    fun initAsyncTask(){
+        var asyncTask: AndroidAsyncTask? = null
+
+        button_AsyncTask.setOnClickListener {
+            if(asyncTask != null){
+                asyncTask?.cancel(false)
+                button_AsyncTask.text = "start AsyncTask"
+                asyncTask = null
+                return@setOnClickListener
+            }
+            asyncTask = AndroidAsyncTask(progessBar_AsyncTask)
+            asyncTask?.execute()
+            button_AsyncTask.text = "cancel AsyncTask"
+        }
+    }
+
+    fun initRX(){
+        button_RxKotlin.setOnClickListener {
+            ReactiveX.startRxKotlin(progessBar_Rx)
+        }
+    }
+
+    fun initCoroutine(){
+        button_Coroutine.setOnClickListener {
+            Coroutines.startCoroutine(progessBar_Coroutine)
+        }
+    }
+
 }
