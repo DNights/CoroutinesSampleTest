@@ -6,82 +6,104 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    var javaThread: JavaThread? = null
+    var asyncTask: AndroidAsyncTask? = null
+    var isRxRun = false
+    var isCoroutineRun = false
 
+    var isAllRun = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initJavaThread()
-        initAsyncTask()
-        initRX()
-        initCoroutine()
+
+        initButton()
+    }
+
+    private fun initButton() {
+        button_Thread.setOnClickListener {
+            initJavaThread()
+        }
+
+        button_AsyncTask.setOnClickListener {
+            initAsyncTask()
+        }
+
+        button_RxKotlin.setOnClickListener {
+            initRX()
+        }
+
+        button_Coroutine.setOnClickListener {
+            initCoroutine()
+        }
+
+        button_All.setOnClickListener {
+            initJavaThread()
+            initAsyncTask()
+            initRX()
+            initCoroutine()
+
+            if(isAllRun){
+                button_All.text = "Start All"
+                isAllRun = false
+                return@setOnClickListener
+            }
+
+            button_All.text = "Cancel All"
+            isAllRun = true
+        }
     }
 
     fun initJavaThread(){
-        var javaThread: JavaThread? = null
-
-        button_Thread.setOnClickListener {
-            if(javaThread != null){
-                javaThread?.interrupt()
-                button_Thread.text = "start Thread"
-                javaThread = null
-                return@setOnClickListener
-            }
-            javaThread = JavaThread(progessBar_Thread)
-            javaThread?.start()
-            button_Thread.text = "cancel Thread"
-
+        if(javaThread != null){
+            javaThread?.interrupt()
+            button_Thread.text = "start Thread"
+            javaThread = null
+            return
         }
+
+        javaThread = JavaThread(progessBar_Thread)
+        javaThread?.start()
+        button_Thread.text = "cancel Thread"
     }
 
     fun initAsyncTask(){
-        var asyncTask: AndroidAsyncTask? = null
-
-        button_AsyncTask.setOnClickListener {
-            if(asyncTask != null){
-                asyncTask?.cancel(true)
-                button_AsyncTask.text = "start AsyncTask"
-                asyncTask = null
-                return@setOnClickListener
-            }
-            asyncTask = AndroidAsyncTask(progessBar_AsyncTask)
-            asyncTask?.execute()
-            button_AsyncTask.text = "cancel AsyncTask"
+        if(asyncTask != null){
+            asyncTask?.cancel(true)
+            button_AsyncTask.text = "start AsyncTask"
+            asyncTask = null
+            return
         }
+
+        asyncTask = AndroidAsyncTask(progessBar_AsyncTask)
+        asyncTask?.execute()
+        button_AsyncTask.text = "cancel AsyncTask"
     }
 
     fun initRX(){
-        var isRxRun = false
-
-        button_RxKotlin.setOnClickListener {
-            if(isRxRun){
-                ReactiveX.cancelRxKotlin()
-                button_RxKotlin.text = "start RxKotlin"
-                isRxRun = false
-                return@setOnClickListener
-            }
-
-            ReactiveX.startRxKotlin(progessBar_Rx)
-            button_RxKotlin.text = "cancel RxKotlin"
-            isRxRun = true
+        if(isRxRun){
+            ReactiveX.cancelRxKotlin()
+            button_RxKotlin.text = "start RxKotlin"
+            isRxRun = false
+            return
         }
+
+        ReactiveX.startRxKotlin(progessBar_Rx)
+        button_RxKotlin.text = "cancel RxKotlin"
+        isRxRun = true
     }
 
     fun initCoroutine(){
-        var isCoroutineRun = false
-
-        button_Coroutine.setOnClickListener {
-            if(isCoroutineRun){
-                Coroutines.cancelCoroutine()
-                button_Coroutine.text = "start Coroutine"
-                isCoroutineRun = false
-                return@setOnClickListener
-            }
-
-            Coroutines.startCoroutine(progessBar_Coroutine)
-            button_Coroutine.text = "cancel Coroutine"
-            isCoroutineRun = true
+        if(isCoroutineRun){
+            Coroutines.cancelCoroutine()
+            button_Coroutine.text = "start Coroutine"
+            isCoroutineRun = false
+            return
         }
+
+        Coroutines.startCoroutine(progessBar_Coroutine)
+        button_Coroutine.text = "cancel Coroutine"
+        isCoroutineRun = true
     }
 
 }

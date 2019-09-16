@@ -1,6 +1,7 @@
 package com.dnights.coroutinessample
 
 import android.os.AsyncTask
+import android.os.Looper
 import android.util.Log
 import android.widget.ProgressBar
 
@@ -12,21 +13,25 @@ class AndroidAsyncTask(private val progressAsyncTask: ProgressBar) : AsyncTask<U
     private var isCanceled = false
 
     override fun doInBackground(vararg params: Unit?): Int {
+
+        Log.d("test", "Looper.myLooper() == Looper.getMainLooper() : ${Looper.myLooper() == Looper.getMainLooper()}")
+
         for(i in PROGRESS_START..PROGRESS_MAX){
             if(isCanceled) break
             Thread.sleep((JOB_TIME / PROGRESS_MAX).toLong())
-            publishProgress(i)
+            progressAsyncTask.progress = i
+            //publishProgress(i)
             Log.d("test", "AndroidAsyncTask doInBackground = $i")
         }
 
         return -1
     }
 
-    override fun onProgressUpdate(vararg values: Int?) {
-        super.onProgressUpdate(*values)
-        progressAsyncTask.progress = values[0] ?: -1
-        Log.d("test", "AndroidAsyncTask onProgressUpdate = ${progressAsyncTask.progress}")
-    }
+//    override fun onProgressUpdate(vararg values: Int?) {
+//        super.onProgressUpdate(*values)
+//        progressAsyncTask.progress = values[0] ?: -1
+//        Log.d("test", "AndroidAsyncTask onProgressUpdate = ${progressAsyncTask.progress}")
+//    }
 
     override fun onPreExecute() {
         super.onPreExecute()
