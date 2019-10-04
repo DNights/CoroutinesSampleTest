@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     var javaThread: JavaThread? = null
+    var javaRunnable: Thread? = null
     var asyncTask: AndroidAsyncTask? = null
     var isRxRun = false
     var isCoroutineRun = false
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
     private fun initButton() {
         button_Thread.setOnClickListener {
             initJavaThread()
+        }
+
+        button_Runnable.setOnClickListener {
+            initJavaRunnable()
         }
 
         button_AsyncTask.setOnClickListener {
@@ -65,6 +70,19 @@ class MainActivity : AppCompatActivity() {
         javaThread = JavaThread(progessBar_Thread)
         javaThread?.start()
         button_Thread.text = "cancel Thread"
+    }
+
+    fun initJavaRunnable(){
+        if(javaRunnable != null){
+            javaRunnable?.interrupt()
+            button_Runnable.text = "start Runnable"
+            javaRunnable = null
+            return
+        }
+
+        javaRunnable = Thread(JavaRunnable(progessBar_Runnable))
+        javaRunnable?.start()
+        button_Runnable.text = "cancel Runnable"
     }
 
     fun initAsyncTask(){

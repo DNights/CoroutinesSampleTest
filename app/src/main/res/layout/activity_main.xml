@@ -28,6 +28,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ProgressBar
+                android:id="@+id/progessBar_Runnable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+        <Button
+                android:text="start Runnable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button_Runnable"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ProgressBar
                 android:id="@+id/progessBar_AsyncTask"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
