@@ -17,14 +17,20 @@ object Coroutines {
             // Show progress from UI thread
             progessbarCoroutine.progress = 0
 
-            CoroutineScope(Dispatchers.Default + job).async {
+            val coroutineContext = Dispatchers.Default + job
+
+            // background thread
+            withContext(CoroutineScope(coroutineContext).coroutineContext) {
                 // background thread
-                for(i in PROGRESS_START..PROGRESS_MAX){
+                for (i in PROGRESS_START..PROGRESS_MAX) {
                     delay((JOB_TIME / PROGRESS_MAX).toLong())
                     progessbarCoroutine.progress = i
-                    Log.d("test", "Coroutines progessbarCoroutine.progress = ${progessbarCoroutine.progress}")
+                    Log.d(
+                        "test",
+                        "Coroutines progessbarCoroutine.progress = ${progessbarCoroutine.progress}"
+                    )
                 }
-            }.await()
+            }
             // UI data update from UI thread
             // Hide Progress from UI thread
         }
