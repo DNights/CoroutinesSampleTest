@@ -1,7 +1,9 @@
-package com.dnights.coroutinessample
+package com.dnights.coroutinessample.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dnights.coroutinessample.R
+import com.dnights.coroutinessample.task.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -68,7 +70,8 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        javaThread = JavaThread(progessBar_Thread)
+        javaThread =
+            JavaThread(progessBar_Thread)
         javaThread?.start()
         button_Thread.text = "cancel Thread"
     }
@@ -81,7 +84,11 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        javaRunnable = Thread(JavaRunnable(progessBar_Runnable))
+        javaRunnable = Thread(
+            JavaRunnable(
+                progessBar_Runnable
+            )
+        )
         javaRunnable?.start()
         button_Runnable.text = "cancel Runnable"
     }
@@ -94,7 +101,9 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        asyncTask = AndroidAsyncTask(progessBar_AsyncTask)
+        asyncTask = AndroidAsyncTask(
+            progessBar_AsyncTask
+        )
         asyncTask?.execute()
         button_AsyncTask.text = "cancel AsyncTask"
     }

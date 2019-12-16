@@ -1,11 +1,10 @@
-package com.dnights.coroutinessample
+package com.dnights.coroutinessample.task
 
 import android.util.Log
 import android.widget.ProgressBar
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
 object ReactiveX {
@@ -20,8 +19,9 @@ object ReactiveX {
 
     fun startRxKotlin(progessbarRx: ProgressBar) {
         Observable
-            .intervalRange(PROGRESS_START.toLong(),
-                PROGRESS_MAX+1.toLong(),
+            .intervalRange(
+                PROGRESS_START.toLong(),
+                PROGRESS_MAX +1.toLong(),
                 0,
                 (JOB_TIME / PROGRESS_MAX).toLong(),
                 TimeUnit.MILLISECONDS)

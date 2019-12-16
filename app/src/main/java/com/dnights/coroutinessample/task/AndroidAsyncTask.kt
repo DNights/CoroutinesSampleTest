@@ -1,4 +1,4 @@
-package com.dnights.coroutinessample
+package com.dnights.coroutinessample.task
 
 import android.os.AsyncTask
 import android.os.Looper
