@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         button_All.setOnClickListener {
             initJavaThread()
+            initJavaRunnable()
             initAsyncTask()
             initRX()
             initCoroutine()
